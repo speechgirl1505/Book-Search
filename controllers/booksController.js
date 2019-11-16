@@ -17,10 +17,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Book
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    console.log(req.body)
+    // db.Book
+    //   .create(req.body)
+    //   .then(dbModel => res.json(dbModel))
+    //   .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.Book
@@ -30,7 +31,7 @@ module.exports = {
   },
   remove: function(req, res) {
     db.Book
-      .findById({ _id: req.params.id })
+      .findById({ id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

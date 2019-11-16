@@ -6,13 +6,13 @@ import API from "../utils/API";
 
 class Detail extends Component {
   state = {
-    book: {}
+    books: []
   };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
   componentDidMount() {
-    API.getBook(this.props.match.params.id)
-      .then(res => this.setState({ book: res.data }))
+    API.getBook()
+      .then(res => this.setState({ books: res.data }))
       .catch(err => console.log(err));
   }
 
@@ -36,6 +36,9 @@ class Detail extends Component {
                 {this.state.book.description}
               </p>
             </article>
+            {/* <button className="deleteBook btn btn-secondary" id={books._id} onClick={() => this.deleteBook(book._id)}>
+                      Delete Book
+                     </button> */}
           </Col>
         </Row>
         <Row>
