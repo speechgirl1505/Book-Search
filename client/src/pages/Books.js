@@ -14,7 +14,8 @@ class Books extends Component {
     author: "",
     description: "", 
     image: "",
-    link: ""
+    link: "",
+    message: ""
   };
 
 // use for loading saved books if you ever get to that point 
@@ -43,6 +44,7 @@ loadBooks = () => {
        
      }
         console.log(res.data.items[0].volumeInfo);
+        console.log("why arent you working " + res.data.items[0].volumeInfo.imageLinks.smallThumbnail)
         this.setState({books: stupid});
         // this.loadBooks();
         // this.setState({ books: res.data, title: "", author: "" })
@@ -51,9 +53,14 @@ loadBooks = () => {
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+//needs to be a saved button
+//its saving getting all in the array not a specific
+  saveBook = (id) => {
+    console.log(this.state.books);
+    let savedBooks = this.state.books.filter(book => book._id === id)
+    savedBooks = savedBooks[0];
+    API.saveBook(savedBooks)
+      .then(this.setState({message: alert("You saved a book!")}))
       .catch(err => console.log(err));
   };
 
@@ -123,14 +130,16 @@ loadBooks = () => {
                {this.state.books.map(book => (
                  <ListItem key={book._id}>
                    <div>
-                     <img src={book.imageLinks} alt=""></img>
+                     <div>
+                   <img src={book.imageLinks} alt=""></img>
+                   </div>
                      <Link to={"/books/" + book._id}></Link>
                      <a href={book.previewLink}>Go to Book</a>
                      <h2>
                        {book.title} by {book.authors},
                      </h2>
                      <p>{book.description}</p>
-                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                     <DeleteBtn onClick={() => this.saveBook(book._id)} />
                    </div>
                  </ListItem>
                ))}
