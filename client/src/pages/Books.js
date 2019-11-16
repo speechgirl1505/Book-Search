@@ -23,14 +23,19 @@ class Books extends Component {
     this.loadBooks();
   }
 
-
-
   loadBooks = () => {
     API.getBooks()
       .then(res =>
         this.setState({ books: res.data, title: "", author: "" })
       )
       .catch(err => console.log(err));
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   handleFormSubmit = (event) => {
@@ -53,8 +58,6 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  //needs to be a saved button
-  //its saving getting all in the array not a specific
   saveBook = (id) => {
     // console.log(this.state.books);
     let savedBooks = this.state.books.filter(book => book.id === id)
@@ -72,29 +75,6 @@ class Books extends Component {
       .then(alert("You saved a book!"))
       .catch(err => console.log(err));
   };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  //need to make delete button
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
-  // handleSave = event => {
-  //   event.preventDefault();
-  //   if (this.state.title || this.state.author) {
-  //     API.saveBook()
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
   render() {
     return (

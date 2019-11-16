@@ -1,12 +1,13 @@
 import React from "react";
+import "./style.css";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
-      <a className="navbar-brand" href="/">
+    <nav className="navbar navbar-expand-lg">
+      <a className="navbar" href="/">
         Home
       </a>
-      <a className="navbar-brand" href="/saved">
+      <a className="navbar" href="/saved">
         Saved Books
       </a>
     </nav>
