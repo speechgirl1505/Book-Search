@@ -65,7 +65,7 @@ class Books extends Component {
     console.log(savedBooks)
    const saveTheDamnBook = {
             title: savedBooks.volumeInfo.title,
-            author: savedBooks.volumeInfo.authors,
+            author: savedBooks.volumeInfo.authors[0],
             description: savedBooks.volumeInfo.description, 
             image: savedBooks.volumeInfo.imageLinks.thumbnail,
             link: savedBooks.volumeInfo.previewLink
@@ -119,7 +119,7 @@ class Books extends Component {
                       <Link to={"/books/" + book.id}></Link>
                       <a href={book.volumeInfo.previewLink}>Go to Book</a>
                       <h2>
-                        {book.volumeInfo.title} by {book.volumeInfo.authors},
+                        {book.volumeInfo.title} by {book.volumeInfo.authors[0]},
                       </h2>
                       <p>{book.volumeInfo.description}</p>
                       <Btn onClick={() => this.saveBook(book.id)} />

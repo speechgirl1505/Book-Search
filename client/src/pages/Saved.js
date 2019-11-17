@@ -16,12 +16,12 @@ class Saved extends Component {
       .catch(err => console.log(err));
   }
 
-    //need to make delete button
-    // deleteBook = id => {
-    //   API.deleteBook(id)
-    //     .then(res => this.loadBooks())
-    //     .catch(err => console.log(err));
-    // };
+    // need to make delete button
+    deleteBook = id => {
+      API.deleteBook(id)
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    };
 
   render() {
     return (
@@ -43,14 +43,14 @@ class Saved extends Component {
                 {this.state.book.description}
               </p>
             </article>
-            {/* <button className="deleteBook btn btn-secondary" id={books._id} onClick={() => this.deleteBook(book._id)}>
+            <button className="deleteBook btn" id={this.state.book.id} onClick={() => this.deleteBook(this.state.book.id)}>
                       Delete Book
-                     </button> */}
+                     </button>
           </Col>
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/">← Back to Home</Link>
           </Col>
         </Row>
       </Container>
