@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import SavedList from "../components/SavedList"
 
 class Saved extends Component {
   state = {
@@ -16,12 +17,12 @@ class Saved extends Component {
       .catch(err => console.log(err));
   }
 
-    // need to make delete button
-    deleteBook = id => {
-      API.deleteBook(id)
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    };
+  // need to make delete button
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.componentDidMount())
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -29,23 +30,13 @@ class Saved extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>
-                {this.state.book.title} by {this.state.book.author}
-              </h1>
+              <h1>Your Saved Books</h1>
             </Jumbotron>
           </Col>
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
-            <article>
-              <h1>description</h1>
-              <p>
-                {this.state.book.description}
-              </p>
-            </article>
-            <button className="deleteBook btn" id={this.state.book.id} onClick={() => this.deleteBook(this.state.book.id)}>
-                      Delete Book
-                     </button>
+          <SavedList books={this.state.books} deleteBook={this.deleteBook} />
           </Col>
         </Row>
         <Row>

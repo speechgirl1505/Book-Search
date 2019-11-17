@@ -116,12 +116,13 @@ class Books extends Component {
                       <div id={book.id}>
                         <img src={book.volumeInfo.imageLinks.thumbnail} alt=""></img>
                       </div>
-                      <Link to={"/books/" + book.id}></Link>
-                      <a href={book.volumeInfo.previewLink}>Go to Book</a>
+                      <Link to={"/books/" + book.volumeInfo.id}>
                       <h2>
                         {book.volumeInfo.title} by {book.volumeInfo.authors[0]},
                       </h2>
+                      </Link>
                       <p>{book.volumeInfo.description}</p>
+                      <a href={book.volumeInfo.previewLink}>Go to Book</a>
                       <Btn onClick={() => this.saveBook(book.id)} />
                     </div>
                   </ListItem>
