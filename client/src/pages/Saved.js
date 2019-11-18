@@ -11,9 +11,9 @@ class Saved extends Component {
   };
   // When this component mounts, grab the book with the _id of this.props.match.params.id
 
-  componentDidMount() {
-    API.getBook()
-      .then(res => this.setState({ books: res.data }))
+  componentDidMount = () => {
+    API.getBooks()
+      .then(res => {console.log("YOO " + res.data);this.setState({ books: res.data })})
       .catch(err => console.log(err));
   }
 
