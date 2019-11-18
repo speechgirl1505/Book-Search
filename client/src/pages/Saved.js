@@ -19,6 +19,7 @@ class Saved extends Component {
 
   // need to make delete button
   deleteBook = id => {
+    console.log("this is " + id)
     API.deleteBook(id)
       .then(res => this.componentDidMount())
       .catch(err => console.log(err));
@@ -36,7 +37,7 @@ class Saved extends Component {
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
-          <SavedList books={this.state.books} deleteBook={this.state.deleteBook} />
+          <SavedList books={this.state.books} deleteBook={this.deleteBook} />
           </Col>
         </Row>
         <Row>

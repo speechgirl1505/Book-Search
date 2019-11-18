@@ -19,7 +19,7 @@ const SavedList = props => {
                     {props.books.map(book => {
                         return (
                             <li className="saved-list list-group-item">
-                                <Row className="SearchResult" id={book.title + "Card"} key={book.id}>
+                                <Row className="SearchResult" id={book.title + "Card"} key={book._id}>
                                     {/* col-3 show image of the book */}
                                     <Col size="2" className="bookImage">
                                         <img src={book.image} alt={book.title} />
@@ -40,7 +40,7 @@ const SavedList = props => {
                                 </Row>
                                 <br></br>
                                 <Row className="buttonDiv ">
-                                    <button className="takeItAway btn" onClick={() => props.deleteBook(book.id)}>
+                                    <button className="takeItAway btn" onClick={() => props.deleteBook(book._id)}>
                                         Delete Book
                                     </button>
                                     <a href={book.link}>
