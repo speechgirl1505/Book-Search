@@ -1,5 +1,6 @@
 import React from "react";
-import {Row, Col} from "../Grid"
+import {Row, Col} from "../Grid";
+
 
 const SavedList = props => {
     return (props.books.length === 0) ? (
@@ -39,7 +40,7 @@ const SavedList = props => {
                                 </Row>
                                 <br></br>
                                 <Row className="buttonDiv ">
-                                    <button className="deleteBook btn btn-danger" id={book.id} onClick={() => props.deleteBook(book.id)}>
+                                    <button className="takeItAway btn" onClick={() => props.deleteBook(book.id)}>
                                         Delete Book
                                     </button>
                                     <a href={book.link}>

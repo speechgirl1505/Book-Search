@@ -36,7 +36,7 @@ class Saved extends Component {
         </Row>
         <Row>
           <Col size="md-10 md-offset-1">
-          <SavedList books={this.state.books} deleteBook={this.deleteBook} />
+          <SavedList books={this.state.books} deleteBook={this.state.deleteBook} />
           </Col>
         </Row>
         <Row>
